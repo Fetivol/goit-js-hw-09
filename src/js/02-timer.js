@@ -41,6 +41,7 @@ function wrongDate() {
 }
 
 function countDownTimer() {
+  selectors.startButEl.disabled = true;
   const intervalId = setInterval(() => {
     dateDifference -= 1000;
     const { days, hours, minutes, seconds } = convertMs(dateDifference);
