@@ -32,7 +32,7 @@ selectors.startButEl.disabled = true;
 flatpickr(selectors.inputEl, options);
 
 function wrongDate() {
-  if (selectedDate >= options.defaultDate.getTime()) {
+  if (selectedDate > options.defaultDate.getTime()) {
     selectors.startButEl.disabled = false;
   } else {
     Notiflix.Notify.failure('Please choose a date in the future');
