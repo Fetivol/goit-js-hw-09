@@ -5,10 +5,11 @@ const selectors = {
   delayEl: formEl.elements.delay,
   stepEl: formEl.elements.step,
   amountEl: formEl.elements.amount,
+  submitEl: formEl.children[3],
 };
 
-let fulfilledCount = 0;
-let rejectedCount = 0;
+// let fulfilledCount = 0;
+// let rejectedCount = 0;
 let amount = 0;
 
 formEl.addEventListener('submit', promiseGenerator);
@@ -26,19 +27,20 @@ function promiseGenerator(evt) {
           Notiflix.Notify.success(
             `✅ Fulfilled promise ${position} in ${delay}ms`
           );
-          fulfilledCount += 1;
-          checkCompletion();
+          // fulfilledCount += 1;
+          // checkCompletion();
         })
         .catch(({ position, delay }) => {
           Notiflix.Notify.failure(
             `❌ Rejected promise ${position} in ${delay}ms`
           );
-          rejectedCount += 1;
-          checkCompletion();
+          // rejectedCount += 1;
+          // checkCompletion();
         });
       delay += step;
     }
   }, delay);
+  formEl.reset();
 }
 
 function createPromise(position, delay) {
@@ -54,8 +56,8 @@ function createPromise(position, delay) {
   });
 }
 
-function checkCompletion() {
-  if (fulfilledCount + rejectedCount === amount) {
-    formEl.reset();
-  }
-}
+// function checkCompletion() {
+//   if (fulfilledCount + rejectedCount === amount) {
+//     formEl.reset();
+//   }
+// }
